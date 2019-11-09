@@ -37,24 +37,25 @@ def opciones_menu_principal(opcion):
         print("Error, opcion invalida")
 
 def menu_principal(opcion):
-    print("Hospital-Especialidad")
-    print("1. Hospital")
-    print("2. Especialidades")
+    while(opcion!=0):
+        print("Hospital-Especialidad")
+        print("1. Hospital")
+        print("2. Especialidades")
 
-    opcion_seleccionada = input("Escoja una opcion:")
-    if(opcion_seleccionada.isnumeric()):
-        opcion= int(opcion_seleccionada)
+        opcion_seleccionada = input("Escoja una opcion:")
+        if(opcion_seleccionada.isnumeric()):
+            opcion= int(opcion_seleccionada)
 
-    if(opcion == 1):
-        menu_hospital("Hospital")
-    #elif (opcion==2):
-        #opc_especialidad("Especialidades")
-    else:
-        print("\n")
+        if(opcion == 1):
+            menu_hospital("Hospital")
+        #elif (opcion==2):
+            #opc_especialidad("Especialidades")
+        else:
+            print("\n")
 
-    try:
-        opciones_menu_principal(opcion)()
-    except TypeError:
-        print("Error")
+        try:
+            opciones_menu_principal(opcion)()
+        except TypeError:
+             print("")
 
 menu_principal(-1)

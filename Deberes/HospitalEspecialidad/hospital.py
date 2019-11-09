@@ -4,7 +4,7 @@ def add_hospital():
     nombre_hospital = input("Ingrese el nombre del nuevo hospital:\n")
     ciudad_hosp= input("Ingrese la ciudad donde se encuentra el hospital:\n")
     num_especialidades = input("Ingrese el numero de especialidades que tiene el nuevo hospital:\n")
-    hospital = "\t"+id_hospital+"\t"+nombre_hospital+"\t"+ciudad_hosp+"\t"+num_especialidades
+    hospital ="\n"+ id_hospital+"\t"+nombre_hospital+"\t"+ciudad_hosp+"\t"+num_especialidades+"\n"
     
     
     try:
@@ -22,9 +22,9 @@ def leer_archivo_hopital():
     try:
         archivo_hospitales_abierto = open('./archivo_hospitales.txt')
         contenido = archivo_hospitales_abierto.readlines()
-        print("\n"+"ID HOSPITAL\t NOMBRE\t CIUDAD\t ESPECIALIDADES")
-        for indice in contenido: # recorre cada linea del string contenido
-            print(indice)
+        print("ID HOSPITAL\t NOMBRE\t CIUDAD\t ESPECIALIDADES")
+        for line in contenido: # recorre cada linea del string contenido
+            print(line)
 
         archivo_hospitales_abierto.close()
     
@@ -43,7 +43,7 @@ def eleminar_hospital():
         for indice in contenido: # recorre cada linea del string contenido
             print(indice)
 
-        hospital_eliminado = input("Ingrese el nombre del hospital que se quiere eliminar")
+        hospital_eliminado = input("Ingrese el id del hospital que se quiere eliminar \n")
         for indice in contenido:
             if not hospital_eliminado in indice:
                 lista_de_hospitales.append(indice)
