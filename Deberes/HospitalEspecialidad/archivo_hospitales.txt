@@ -1,1 +1,13 @@
-	3	militar	quito	15
+
+
+02	militar	quito	15
+
+02	iess	quito	14
+
+
+01	militar	cuenca	14
+
+04	iess	quito	35
+
+05	seguro	latacunga	10
+
