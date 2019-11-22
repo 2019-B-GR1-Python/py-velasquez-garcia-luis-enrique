@@ -119,8 +119,29 @@ ciu_append = ciudades_uno.append( # tambien concatena y tambien verifica integri
         ciudades_dos, verify_integrity = True)
 
 
+ciudades_uno.max() # devuelve el valor maximo de las series
+
+pd.Series.max(ciudades_uno)
+pd.Series.min(ciudades_uno)
+
+np.min(ciudades_uno)
+np.max(ciudades_uno)
 
 
+# Estadiscticas
+
+ciudades_uno.mean()
+ciudades_uno.median()
+np.average(ciudades_uno)
+
+ciudades_uno.head(2) # dos primeros
+ciudades_uno.tail(2) #dos ultimos
+
+ciudades_uno.sort_values().head(2) #ordeanmiento ascendente
+ciudades_uno.sort_values(ascending = False).head(2) # ordenamiento descendente
+
+ciudades_uno.sort_values().tail(2)
+ciudades_uno.sort_values(ascending = False).tail(2)
 
 
 
