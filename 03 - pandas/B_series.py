@@ -144,6 +144,30 @@ ciudades_uno.sort_values().tail(2)
 ciudades_uno.sort_values(ascending = False).tail(2)
 
 
+# #################FUNCION MAP
+# de las ciudades que tenemos queremos que de 0 a 1000 subirles el 5%
+# de 10001 a 5000 subir un 10%
+#y de 5001 a 20000 subir un 15%
+
+def calculo(valor): # valor es la columna, es decir 300 o 1000 0 20000
+    if(valor<=1000):
+        return valor *1.05
+    if(valor >1000 and valor <=5000):
+        return valor *1.10
+    if(valor>5000):
+        return valor *1.15
+ciudades_uno
+# sirve para hacer operaciones por columna
+ciudad_calculada = ciudades_uno.map(calculo) # enviar la funcion como parametro
+ciudad_calculada
+
+# funcion where
+ciudades_uno.where(ciudades_uno < 1000, ciudades_uno * 1.05)# cuando NO se cumple la condicion se aplica
+
+
+
+
+
 
 
 
