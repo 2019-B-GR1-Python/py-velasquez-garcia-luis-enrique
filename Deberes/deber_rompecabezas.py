@@ -10,16 +10,15 @@ from scipy import misc
 import matplotlib.pyplot as plt
 
 def mostrar_rompecabezas(columnas, filas, imagen, piezas):
-    puzzle = np.zeros([filas, int(
-        imagen.shape[0] / filas), imagen.shape[1], 3], dtype=int)
+    puzzle = np.zeros([filas, int(imagen.shape[0] / filas), imagen.shape[1], 3], dtype=int)
     for i in range(1, filas + 1):
         puzzle[i -1] = np.concatenate(piezas[(i - 1) * columnas: i * columnas], 1)
     puzzle = np.concatenate(puzzle, 0)
     return puzzle
 
 def crear_rompecabezas(columnas, filas, imagen):
-    deslizarVertical = np.split(imagen, filas)
     contador = 0
+    deslizarVertical = np.split(imagen, filas)
     piezas = np.zeros([columnas * filas, int(imagen.shape[0] / filas),int(imagen.shape[1] / columnas), 3], dtype=int)
     for slice in deslizarVertical:
         deslizarHorizontal = np.hsplit(slice, columnas)
@@ -39,31 +38,21 @@ def jugar(pos_antes, pos_despues, rompecabezas):
     rompecabezas[pos_despues] = aux_rompecabezas[pos_antes]
     return rompecabezas
 
-def imprimir_matriz(columnas, filas):
-    counter = 0
-    string_row = ""
-    for row in range(filas):
-        for iterab in range(columnas):
-            string_row += "|" + str(counter + 1) + "\t"
-            counter += 1
-        print(string_row)
-        string_row = ""
-
 
 def completado(imagen, puzzled_image):
     return np.array_equal(imagen, puzzled_image)
 
 
 image = misc.face() 
-columnas = input("Número de columnas para el rompecabezas: ")
-filas = input("Número de filas para el rompecabezas: ")
-imprimir_matriz(int(columnas), int(filas))
+columnas = input("Número de columnas del rompecabezas: ")
+filas = input("Número de filas del rompecabezas: ")
+#imprimir_matriz(int(columnas), int(filas))
 rompecabezas = mostrar_rompecabezas(int(columnas), int(filas), image, mezclar_rompecabezas(int(columnas), int(filas), image))
 plt.imshow(rompecabezas)
 plt.show()
 nuevo_rompecabezas = rompecabezas
 while not completado(image, nuevo_rompecabezas):
-    print("Intercambie posiciones:")
+    print("Jugar:")
     try:
         pos_antes = int(input("Desde la posición:"))
         pos_despues = int(input("Hacia la posición:"))
