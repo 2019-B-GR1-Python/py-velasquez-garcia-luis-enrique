@@ -86,10 +86,10 @@ worksheet.write_column('B2', num_artistas)
 
 chart = workbook.add_chart({'type': 'line'})
 chart.add_series({
-    'values': '=Artistas!$B$2:$B${}'.format(len(num_artistas.index)+1) ,
+    'values': '=Sheet1!$B$2:$B$85',
     'marker': {
         'type': 'square',
-        'size': 8,
+        'size': 10,
         'border': {'color': 'black'},
         'fill':   {'color': 'red'},
     },
