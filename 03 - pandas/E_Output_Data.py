@@ -98,7 +98,27 @@ worksheet.insert_chart('C1', chart)
 
 workbook.close()
 
+##### SQL  ######
 
+with sqlite3.connect("bdd_artist.db") as conexion: ## .db archivos de sqlite
+    df5.to_sql('py_artistas', conexion)
+    # el archivo se crea en la carpeta donde esta el script, usar Dbeaver para abrirlo
+    
+### MYSQL ###
+    #with mysql.connect('mysql://user:password@ip:puerto/nombre_base') as conexion:
+        #df5.to_sql('tabla_mysql', conexion)
+        
+### JSON ####
+        
+df.to_json('artistas.json') # el formato no es lo mas adecuado
+
+df.to_json('artistas_tabla.json', orient='table') # el formato con el q sea crea es como tabla
+
+    
+    
+    
+    
+    
 
 
 
