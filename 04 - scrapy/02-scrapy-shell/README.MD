@@ -50,5 +50,22 @@ $response.css('span')
 $response.css('span.title').extract()
 $response.css('span.title::text').extract() -> obtenemos el texto de las frases
 $response.css('.tag::text').extract() -> lista de etiquetas pero todas, se necesita diferenciar
+$response.css('.row > div > div:nth-child(2) > .text::text').extract()
+
+$ response.xpath('/html/head/title').extract()
+$ response.xpath('//title').extract()
+$ response.xpath('/html/body/div/div[2]/div[2]/h2').extract()
+$ response.xpath('/html/body/div/div[2]/div[2]/h2').extract()
+$ response.xpath("//div[@class='quote']/span[@class='text']").extract_first()
+$ response.xpath("//div[@class='quote']/span[@class='text']/text()").extract_first()
+$ //div[@class='quote']/span/a/@href").extract_first()
+```
+## Scrapy startproject `nombre_proyecto`
+```
+$ scrapy startproject arania_basica
+```
+```
+$scrapy crawl `nombre_de_la_araña`
+$scrapy crawl introduccion_spider
 ```
 
