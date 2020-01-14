@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        /*formas de busqueda por:*/
+
+      /* ID
+      # + nombreId
+       */ 
+      #titulo-uno{
+        background-color: red;
+      } 
+       /*
+       CLASES
+        . + nombre-clase
+       */
+       
+
+       .fondo-verde{
+           background-color: green;
+       }
+        /* NOMBRE-ETIQUETA
+        nombre-etiqueta
+       */ 
+       p{
+           color:white;
+           background-color: black;
+       }
+       body{
+
+           background-color: tomato;
+       }
+/*
+       JERARQUIA
+        - STYLE > ID > CLASE > ETIQUETA
+            nota: no utilizar el style 
+            nunca, pues causa errores
+            al sobre ponerse
+        - ultimo definido "le gana al" anterior definido
+*/
+       .texto-azul{
+           color:blue;
+       }
+       .texto-amarillo{
+        color:yellow;
+       }
+       .texto-cafe{
+           color:brown;
+       }
+        /*Etiqueta dentro de otra
+    li > p
+    */
+    body > ul > li > p {
+        background-color: coral;
+        color:darkgrey;
+    }
+    li > p.texto-amarillo{
+        color:goldenrod;
+    }
+    
+    p.texto-azul.texto-amarillo.texto-cafe.texto-blanco{
+        color: pink;
+    }
+
+    </style>
+</head>
+<body>
+    <h1 class="texto-amarillo">
+        Titulo
+    </h1>
+    <p  id = "titulo-uno" 
+        class="fondo-verde" 
+        style = "background-color: indigo;">
+        Mi mamá
+    </p>
+    <p class = " texto-azul texto-amarillo  texto-cafe texto-blanco" >
+        me mima
+    </p>
+    
+    <ul>
+        <li>
+            <p>Muy</p>
+        </li>
+        <li>
+            <p>Buenos</p>
+        </li>
+        <li>
+            <p class = "texto-amarillo">Dias papu!</p>
+            
+        </li>
+    </ul>
+
+    <style>
+    
+    .texto-blanco{
+        color:white;
+    }
+ </style>
+
+</body>
+</html>
