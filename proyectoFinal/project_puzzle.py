@@ -1,5 +1,7 @@
 import pygame, sys, os, random
 import os.path
+from pygame.constants import *
+
 
 #grid size
 #size of tiles
@@ -42,18 +44,18 @@ class SlidePuzzle:
 
     def random(self): adj = self.adjacent(); self.switch(random.choice([pos for pos in adj if self.in_grid(pos) and pos != self.prev]))
         
-
+ 
     def update(self, dt):
+        
         mouse = pygame.mouse.get_pressed()
-        mpos = pygame.mouse.get_pos()
-
+        mpos = pygame.mouse.get_pos()  
         if mouse[0]:
             x,y = mpos[0]%(self.ts+self.ms),mpos[1]%(self.ts+self.ms)
             if x>self.ms and y>self.ms:
 
                 tile = mpos[0]//self.ts,mpos[1]//self.ts
                 if self.in_grid(tile) and tile in self.adjacent(): self.switch(tile)
-
+            
 
 
 
@@ -72,27 +74,66 @@ class SlidePuzzle:
             if event.key == pygame.K_SPACE:
                 for i in range (100): self.random()
 
-def main():
+def cont_movement():
     pygame.init()
     os.environ['SDL_VIDEO_CENTERED'] = '1'
     pygame.display.set_caption('Puzzle Phantom')
     screen = pygame.display.set_mode((500,500))
     fpsclock = pygame.time.Clock()
     program = SlidePuzzle((3,3),160,5)
+    cont = 0
 
     while True:
         dt = fpsclock.tick()/1000
         screen.fill((0,140,60))
         program.draw(screen)
         pygame.display.flip()
+            
 
         for event in pygame.event.get():
+                
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             program.events(event)
 
-        program.update(dt)
+            if event.type == MOUSEBUTTONDOWN:
+                cont = cont + 1
+                print(cont)
 
+        program.update(dt) 
+    return cont        
+
+#def main():
+    """
+    pygame.init()
+    os.environ['SDL_VIDEO_CENTERED'] = '1'
+    pygame.display.set_caption('Puzzle Phantom')
+    screen = pygame.display.set_mode((500,500))
+    fpsclock = pygame.time.Clock()
+    program = SlidePuzzle((3,3),160,5)
+    cont = 0
+
+    while True:
+        dt = fpsclock.tick()/1000
+        screen.fill((0,140,60))
+        program.draw(screen)
+        pygame.display.flip()
+        
+
+        for event in pygame.event.get():
+            
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            program.events(event)
+
+            if event.type == MOUSEBUTTONDOWN:
+                cont = cont + 1
+                print(cont)
+
+        program.update(dt)
+    """    
+      
 if __name__ == '__main__':
-    main()
+    cont_movement()
