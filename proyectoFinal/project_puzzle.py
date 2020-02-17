@@ -1,5 +1,5 @@
 import pygame, sys, os, random
-
+import os.path
 
 #grid size
 #size of tiles
@@ -13,11 +13,19 @@ class SlidePuzzle:
         self.tilepos = {(x,y):(x*(ts+ms)+ms, y*(ts+ms)+ms) for y in range(gs[1]) for x in range (gs[0])}
         self.prev = None
 
+        self.rect = pygame.Rect(0,0, gs[0]*(ts+ms)+ms, gs[1]*(ts+ms)+ms)
+        #print(self.rect.size)
+
+        pic = pygame.image.load('image1.jpg')
+        pic = pygame.transform.smoothscale(pic,self.rect.size)
+
         self.images = []; font = pygame.font.Font(None,120)
         for i in range(self.tiles_len):
-            image = pygame.Surface((ts,ts)); image.fill((128,0,0))
+           # image = pygame.Surface((ts,ts)); image.fill((128,0,0))
+            x,y = self.tilepos[self.tiles[i]]
+            image = pic.subsurface(x,y,ts,ts)
             text = font.render(str(i+1),2,(0,0,0)); w,h = text.get_size()
-            image.blit(text, ((ts-w)/2,(ts-h)/2)); self.images+=[image]
+            image.blit(text,((ts-w)/2,(ts-h)/2)); self.images+=[image]
         
         
 
@@ -67,19 +75,21 @@ class SlidePuzzle:
 def main():
     pygame.init()
     os.environ['SDL_VIDEO_CENTERED'] = '1'
-    pygame.display.set_caption('Slide Puzzle')
-    screen = pygame.display.set_mode((800,600))
+    pygame.display.set_caption('Puzzle Phantom')
+    screen = pygame.display.set_mode((500,500))
     fpsclock = pygame.time.Clock()
     program = SlidePuzzle((3,3),160,5)
 
     while True:
         dt = fpsclock.tick()/1000
-        screen.fill((0,0,0))
+        screen.fill((0,140,60))
         program.draw(screen)
         pygame.display.flip()
 
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: pygame.quit(); sys.exit()
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
             program.events(event)
 
         program.update(dt)
