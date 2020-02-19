@@ -1,6 +1,7 @@
 import pygame, sys, os, random
 import os.path
 from pygame.constants import *
+from pygame.locals import *
 
 
 #grid size
@@ -78,15 +79,20 @@ def cont_movement():
     pygame.init()
     os.environ['SDL_VIDEO_CENTERED'] = '1'
     pygame.display.set_caption('Puzzle Phantom')
-    screen = pygame.display.set_mode((500,500))
+    screen = pygame.display.set_mode((500,600))
     fpsclock = pygame.time.Clock()
     program = SlidePuzzle((3,3),160,5)
     cont = 0
+    
 
     while True:
         dt = fpsclock.tick()/1000
-        screen.fill((0,140,60))
+        screen.fill((34,113,179))
         program.draw(screen)
+        source = pygame.font.Font(None,35)
+        text_message = "Presionar espacio para iniciar el juego"
+        message = source.render(text_message,1,(0,0,0))
+        screen.blit(message,(10,550))
         pygame.display.flip()
             
 
